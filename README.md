@@ -29,7 +29,7 @@ FROM
 
 Так же есть другой вариант добиться цели:
 
-```
+```sql
 SELECT a.type,b.value FROM (
 	SELECT
 		type,
