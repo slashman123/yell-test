@@ -25,3 +25,18 @@ FROM
 ```
 
 Если различных `type` немного (а судя по примеру их немного) до будет работать довольно шустро даже с большим объемом данных, при условии создания необходимых индексов, для избежания filesort
+
+
+Так же есть другой вариант добиться цели:
+
+```
+SELECT a.type,b.value FROM (
+	SELECT
+		type,
+		MAX(`date`) AS maxDate
+	FROM
+		`data`
+	GROUP BY
+		`type`
+) a LEFT JOIN `data` b ON b.type = a.type AND a.maxDate = b.date;
+```
